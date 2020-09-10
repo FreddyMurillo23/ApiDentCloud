@@ -19,9 +19,7 @@
             }
         }
 
-        public function connect(){
-            return $this->conn;
-        }
+       
 
         public function disconnect(){
             $this->conn = null;
