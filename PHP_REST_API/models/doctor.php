@@ -77,11 +77,10 @@ include_once '../../config/Database.php';
             $db = $database->connect();
 
 
-            $datos = array("user_data" => $user_data,"business_ruc" => $business_ruc,
-            "role"=> $role);
+            $datos = array("user_data" => $user_data,"business_ruc" => $business_ruc,"role"=> $role);
 
             
-            $sql = "CALL insert_doctor_works('".$datos["user_data"]."','".$datos["business"]."','".$datos["role"]."')";
+            $sql = "CALL insert_doctor_works('".$datos["user_data"]."','".$datos["business_ruc"]."','".$datos["role"]."')";
             if($db->query($sql)){
 
 
@@ -98,6 +97,36 @@ include_once '../../config/Database.php';
             mysqli_close($db);
         }
 
+
+        //POST MEDICAL APPOINTMENT
+        public function post_medical_appointment($business_ruc,$user_email_doctor,$user_email_patient,
+        $business_service_name,$commentary,$date_time){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+
+            $datos = array("business_ruc" => $business_ruc,"user_email_doctor" => $user_email_doctor,"user_email_patient"=> $user_email_patient,
+            "business_service_name"=>$business_service_name,"commentary"=>$commentary,"date_time"=>$date_time);
+
+            
+            $sql = "CALL insert_medical_appointment('".$datos["business_ruc"]."','".$datos["user_email_doctor"]."','".$datos["user_email_patient"]."',
+            '".$datos["business_service_name"]."','".$datos["commentary"]."','".$datos["date_time"]."')";
+            if($db->query($sql)){
+
+
+                echo json_encode(
+                    array('message' => 'GUARDADO CON EXITO')
+                );
+            }else{
+        
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+        }
 
 
         //PUT SINGLE EMPLEADO
