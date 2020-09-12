@@ -16,11 +16,11 @@ class Database {
             $this->conn = new mysqli ($host,$username,$password,$db_name);
             echo 'Connected';
             /* change character set to utf8 */
-        if (!$mysqli->set_charset("utf8mb4")) {
-            printf("Error loading character set utf8: %s\n", $mysqli->error);
+        if (!$conn->set_charset("utf8mb4")) {
+            printf("Error loading character set utf8: %s\n", $conn->error);
             exit();
         } else {
-        printf("Current character set: %s\n", $mysqli->character_set_name());
+        printf("Current character set: %s\n", $conn->character_set_name());
         }
 
             
