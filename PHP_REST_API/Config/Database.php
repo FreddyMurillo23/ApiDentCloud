@@ -10,8 +10,8 @@ class Database {
         //DB params
         $host = 'dent-cloud.c2gdnp00za2x.us-east-1.rds.amazonaws.com';
         $db_name = 'DentCloud';
-        $username = 'gato.garcia';     
-        $password = '12345';
+        $username = 'root';     
+        $password = 'brealidad23';
         try{
             $this->conn = new mysqli ($host,$username,$password,$db_name);
             echo 'Connected';
