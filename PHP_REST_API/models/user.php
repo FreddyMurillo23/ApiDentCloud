@@ -1,6 +1,6 @@
 <?php
 include_once '../../config/Database.php';
-    class Cliente {
+    class User{
         //DB STUFF
         public $conn;
 
@@ -13,7 +13,7 @@ include_once '../../config/Database.php';
 
         
         //POST INSERT USER DATA
-        public function post_Usuario($user_email,$user_dni,$user_names,$user_last_names,$birthdate,$cellphone,$sex,$user_type){
+        public function post_user_data($user_email,$password,$user_dni,$user_names,$user_last_names,$birthdate,$cellphone,$sex,$user_type,$doctor_profession){
             //DATABASE CONNECTION
             $database = new Database();
             $db = $database->connect();
@@ -21,12 +21,13 @@ include_once '../../config/Database.php';
 
 
             // DATA
-            $datos = array("user_email" => $user_email,"user_dni" => $user_dni,
-            "user_names"=> $user_names,"user_last_names"=> $user_last_names,"birthdate"=> $birthdate,"cellphone"=> $cellphone,
-            "sex"=> $sex,"user_type"=> $user_type);
+            $datos = array("user_email" => $user_email,"password" => $password,"user_dni" => $user_dni,"user_names"=> $user_names,
+            "user_last_names"=> $user_last_names,"birthdate"=> $birthdate,"cellphone"=> $cellphone,
+            "sex"=> $sex,"user_type"=> $user_type,"doctor_profession" => $doctor_profession);
 
 
             $user_email1 = utf8_decode($datos["user_email"]);
+            $password1=utf8_decode($datos["password"]);
             $user_dni1 = utf8_decode($datos["user_dni"]);
             $user_names1 = utf8_decode($datos["user_names"]);
             $user_last_names1=utf8_decode($datos["user_last_names"]);
@@ -34,8 +35,12 @@ include_once '../../config/Database.php';
             $birthdate1=utf8_decode($datos["birthdate"]);
             $sex1=utf8_decode($datos["sex"]);
             $user_type1=utf8_decode($datos["user_type"]);
+            $doctor_profession1=utf8_decode($datos["doctor_profession"]);
 
-            $sql = "CALL insert_user_register('".$user_email1."','".$user_dni1."','".$user_names1."','".$user_last_names1."','".$birthdate.",".$cellphone1.",".$sex1.",".$user_type1."')";
+
+
+
+            $sql = "CALL insert_user_register('".$user_email1."','".$password1."','".$user_dni1."','".$user_names1."','".$user_last_names1."','".$birthdate1."','".$cellphone1."','".$sex1."','".$user_type1."','".$doctor_profession1."')";
             if($db->query($sql)){
 
 
