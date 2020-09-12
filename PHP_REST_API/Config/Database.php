@@ -15,7 +15,8 @@ class Database {
         try{
             $this->conn = new mysqli ($host,$username,$password,$db_name);
             echo 'Connected';
-           // mysql_set_charset('utf8mb4');
+            mysqli_set_charset('utf8mb4');
+            
         }catch(SQLException $e){
             echo 'Connection Error: '.$e->getMessage();
         } 

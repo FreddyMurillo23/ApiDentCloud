@@ -1,4 +1,4 @@
-<?php
+  <?php
 include_once '../../config/Database.php';
     class Business {
         //DB STUFF
