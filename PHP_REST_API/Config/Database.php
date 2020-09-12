@@ -8,10 +8,10 @@ class Database {
     public function __construct()
     {
         //DB params
-        $host = 'localhost';
-        $db_name = 'comunicacion_senas';
-        $username = 'FredBD';     
-        $password = 'brealidad';
+        $host = 'dent-cloud.c2gdnp00za2x.us-east-1.rds.amazonaws.com';
+        $db_name = 'DentCloud';
+        $username = 'gato.garcia';     
+        $password = '12345';
         try{
             $this->conn = new mysqli ($host,$username,$password,$db_name);
             echo 'Connected';
