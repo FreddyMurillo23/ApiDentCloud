@@ -30,7 +30,6 @@ class Database {
         printf("  => Current character set: %s\n", $this->conn->character_set_name());
         }
         
-
     }
 
 
