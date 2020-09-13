@@ -53,6 +53,75 @@ include_once '../../config/Database.php';
             }
             mysqli_close($db);
         }
+        // POST USER ALLERGIES
+        public function post_create_allergies($ag_type,$ag_name,$ag_description)
+        {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+
+
+            // DATA
+            $datos = array("ag_type" => $ag_type,"ag_name" => $ag_name,"ag_description" => $ag_description);
+
+            //
+            $ag_type1=utf8_decode($datos["ag_type"]);
+            $ag_name1=utf8_decode($datos["ag_name"]);
+            $ag_description1 =utf8_decode($datos["ag_description"]);
+
+            $sql = "CALL create_allergies('".$ag_type1."','".$ag_name1."','".$ag_description1."')";
+            if($db->query($sql)){
+
+
+                echo json_encode(
+                    array('message' => 'GUARDADO CON EXITO')
+                );
+            }else{
+        
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+        }
+
+        //POST USER ALLERGIES
+        public function post_user_allergies($user_data,$code_allergies)
+        {
+             //DATABASE CONNECTION
+             $database = new Database();
+             $db = $database->connect();
+ 
+ 
+ 
+             // DATA
+             $datos = array("user_data" => $user_data,"code_allergies" => $code_allergies);
+ 
+             //
+             $user_data1=utf8_decode($datos["user_data"]);
+             $code_allergies1=utf8_decode($datos["code_allergies"]);
+ 
+             $sql = "CALL create_user_allergies('".$user_data1."',".$code_allergies1.")";
+             if($db->query($sql)){
+
+
+                echo json_encode(
+                    array('message' => 'GUARDADO CON EXITO')
+                );
+            }else{
+        
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+
+        }
+
+        
 
          
 

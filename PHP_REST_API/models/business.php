@@ -19,28 +19,21 @@ include_once '../../config/Database.php';
             $canton,
             $business_location
             ){
+                
             //DATABASE CONNECTION
             $database = new Database();
             $db = $database->connect();
 
 
-            $datos = array("cedruc" => $cedruc,"nomb" => $nomb,
-            "ap_p"=> $ap_p,"ap_m"=> $ap_m,"f_reg"=> $f_reg);
+            $datos = array("business_ruc" => utf8_decode($business_ruc),"business_name" => utf8_decode($business_name),
+            "business_phone"=> utf8_decode($business_phone),"province"=> utf8_decode($province),"canton"=> utf8_decode($canton),"business_location"=> utf8_decode($business_location));
 
-
-            $nombre = utf8_decode($datos["nomb"]);
-            $apellido_p = utf8_decode($datos["ap_p"]);
-            $apellido_m = utf8_decode($datos["ap_m"]);
-            $sql = "CALL add_cliente('".$datos["cedruc"]."','".$nombre."','".$apellido_p."','".$apellido_m."','".$datos["f_reg"]."')";
+            $sql = "CALL insert_business('".$datos["business_ruc"]."','".$datos["business_name"]."','".$datos["business_phone"]."','".$datos["province"]."','".$datos["canton"]."','".$datos["business_location"]."')";
             if($db->query($sql)){
-
-
                 echo json_encode(
                     array('message' => 'GUARDADO CON EXITO')
                 );
-            }else{
-        
-                
+            }else{ 
                 echo json_encode(
                     array('error'=>'ERROR AL INGRESAR LOS DATOS')
                 );
