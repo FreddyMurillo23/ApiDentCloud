@@ -9,11 +9,10 @@ include_once '../../config/Database.php';
             $this->conn = $db;
         }
 
-         
-
         
         //POST INSERT USER DATA
-        public function post_user_data($user_email,$password,$user_dni,$user_names,$user_last_names,$birthdate,$cellphone,$sex,$user_type,$doctor_profession){
+        public function post_user_data($user_email,$password,$user_dni,$user_names,$user_last_names,$birthdate,$cellphone,$sex,$user_type,$doctor_profession)
+        {
             //DATABASE CONNECTION
             $database = new Database();
             $db = $database->connect();
@@ -38,8 +37,6 @@ include_once '../../config/Database.php';
             $doctor_profession1=utf8_decode($datos["doctor_profession"]);
 
 
-
-
             $sql = "CALL insert_user_register('".$user_email1."','".$password1."','".$user_dni1."','".$user_names1."','".$user_last_names1."','".$birthdate1."','".$cellphone1."','".$sex1."','".$user_type1."','".$doctor_profession1."')";
             if($db->query($sql)){
 
@@ -56,6 +53,8 @@ include_once '../../config/Database.php';
             }
             mysqli_close($db);
         }
+
+         
 
     }
 
