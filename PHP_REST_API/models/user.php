@@ -121,6 +121,45 @@ include_once '../../config/Database.php';
 
         }
 
+        public function post_insert_message($user_email,$user_email_emi,$message_content,$message_date,$message_type_id,$message_url_content)
+        {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+
+
+            // DATA
+            $datos = array("user_email" => $user_email,"user_email_emi" => $user_email_emi,"message_content" => $message_content,"message_date"=> $message_date,
+            "message_type_id"=> $message_type_id,"message_url_content"=> $message_url_content);
+
+            //
+            $user_email1 = utf8_decode($datos["user_email"]);
+            $user_email_emi1=utf8_decode($datos["user_email_emi"]);
+            $message_content1=utf8_decode($datos["message_content"]);
+            $message_date1=utf8_decode($datos["message_date"]);
+            $message_type_id1=utf8_decode($datos["message_type_id"]);
+            $message_url_content1=utf8_decode($datos["message_url_content"]);
+
+            //
+            $sql = "CALL insert_message('".$user_email1."','".$user_email_emi1."','".$message_content1."','".$message_date1."',".$message_type_id1.",'".$message_url_content1."')";
+            if($db->query($sql)){
+
+
+               echo json_encode(
+                   array('message' => 'GUARDADO CON EXITO')
+               );
+           }else{
+       
+               
+               echo json_encode(
+                   array('error'=>'ERROR AL INGRESAR LOS DATOS')
+               );
+           }
+           mysqli_close($db);
+
+        }
+
         
 
          
