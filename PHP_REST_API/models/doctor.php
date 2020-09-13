@@ -129,6 +129,116 @@ include_once '../../config/Database.php';
         }
 
 
+        //POST DOCUMENTS
+        public function post_documents($appointment_id,$document_description,$document_type,
+        $document_url,$document_date){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+        
+            $datos = array("appointment_id" => $appointment_id,"document_description" => $document_description,"document_type"=> $document_type,
+            "document_url"=>$document_url,"document_date"=>$document_date);
+
+            
+            $sql = "CALL insert_documents('".$datos["appointment_id"]."','".$datos["document_description"]."','".$datos["document_type"]."',
+            '".$datos["document_url"]."','".$datos["document_date"]."')";
+            if($db->query($sql)){
+
+
+                echo json_encode(
+                    array('message' => 'GUARDADO CON EXITO')
+                );
+            }else{
+        
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+        }
+
+
+        //POST DRUG PRESCRIPTION 
+        public function post_drug_prescription($medical_appointment_id,$drug_id,$prescription_details){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+        
+            $datos = array("medical_appointment_id" => $medical_appointment_id,"drug_id" => $drug_id,"prescription_details"=> $prescription_details);
+            
+            $sql = "CALL insert_drug_prescription('".$datos["medical_appointment_id"]."','".$datos["drug_id"]."','".$datos["prescription_details"]."')";
+            if($db->query($sql)){
+
+                echo json_encode(
+                    array('message' => 'GUARDADO CON EXITO')
+                );
+            }else{
+        
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+        }        
+
+        //PUT APPOINTMENT STATE
+        public function put_appointment_state($id_appointment,$state){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+
+            $datos = array("id_appointment" => $id_appointment,"state" => $state);
+
+            $sql = "CALL update_appointment_state('".$datos["id_appointment"]."','".$datos["state"]."')";
+            if($db->query($sql)){
+
+
+                echo json_encode(
+                    array('message' => 'CAMBIOS GUARDADOS CON EXITO')
+                );
+            }else{
+        
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL ACTUALIZAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+        }
+
+
+        //PUT DRUG PRESCRIPTION
+        public function put_drug_prescription($prescription_id,$drug_id,$prescription_details){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+
+            $datos = array("prescription_id" => $prescription_id,"drug_id" => $drug_id,"prescription_details" => $prescription_details);
+
+            $sql = "CALL update_drug_prescription('".$datos["prescription_id"]."','".$datos["drug_id"]."','".$datos["prescription_details"]."')";
+            if($db->query($sql)){
+
+
+                echo json_encode(
+                    array('message' => 'CAMBIOS GUARDADOS CON EXITO')
+                );
+            }else{
+        
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL ACTUALIZAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+        }
+
+
         //PUT SINGLE EMPLEADO
         public function put_empleado($cedruc,$fecha_n,$carg,$sex,$e_civil){
             //DATABASE CONNECTION
