@@ -20,9 +20,9 @@ if(isset($_GET['medical_appointment_id']) && (isset($_GET['drug_id']) && isset($
 $post -> post_drug_prescription($_GET['medical_appointment_id'],$_GET['drug_id'],$_GET['prescription_details']);
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA RECETA MEDICA')
-    );
+    
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA RECETA MEDICA');
+    echo json_encode($error_arraylist);
 }
 
 ?>

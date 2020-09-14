@@ -20,9 +20,9 @@ if(isset($_GET['disease_type'])&&isset($_GET['disease_description'])){
 $post -> post_disease($_GET['disease_type'],$_GET['disease_description']);
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS PARA INGRESAR LA ENFERMEDADES')
-    );
+    
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA INGRESAR LA ENFERMEDADES');
+    echo json_encode($error_arraylist);
 }
 
 ?>

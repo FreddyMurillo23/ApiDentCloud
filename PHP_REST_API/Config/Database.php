@@ -21,12 +21,12 @@ class Database {
             // echo 'Conection try';
         } 
         
-        /* change character set to utf8 */ 
+        // change character set to utf8 
         if (!$this->conn->set_charset("utf8mb4")) {
-            // printf("   =>  Error loading character set utf8mb4: %s\n", $this->conn->error);
+            printf("   =>  Error loading character set utf8mb4: %s\n", $this->conn->error);
             exit();
         } else {
-        // printf("  => Current character set: %s\n", $this->conn->character_set_name());
+            printf("  => Current character set: %s\n", $this->conn->character_set_name());
         }
 
     }

@@ -22,9 +22,9 @@ if(isset($_GET['user_email']) && isset($_GET['password']) && isset($_GET['user_d
    $post ->post_user_data($_GET['user_email'],$_GET['password'],$_GET['user_dni'],$_GET['user_names'],$_GET['user_last_names'],$_GET['birthdate'],$_GET['cellphone'],$_GET['sex'],$_GET['user_type'],$_GET['doctor_profession']);
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS')
-    );
+    
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS');
+    echo json_encode($error_arraylist);
 }
 
 ?>

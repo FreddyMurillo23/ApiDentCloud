@@ -22,9 +22,9 @@ $post -> post_medical_appointment($_GET['business_ruc'],$_GET['user_email_doctor
 ,$_GET['business_service_name'],$_GET['commentary'],$_GET['date_time']);
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA CITA MEDICA')
-    );
+
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA CITA MEDICA');
+    echo json_encode($error_arraylist);
 }
 
 ?>

@@ -20,9 +20,9 @@ if(isset($_GET['user_data'])&&isset($_GET['code_allergies'])){
 $post -> post_user_allergies($_GET['user_data'],$_GET['code_allergies']);
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS PARA LAS ALERGIAS')
-    );
+    
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA LAS ALERGIAS');
+    echo json_encode($error_arraylist);
 }
 
 ?>
