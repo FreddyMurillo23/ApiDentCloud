@@ -22,9 +22,9 @@ $post -> post_documents($_GET['appointment_id'],$_GET['document_description'],$_
 ,$_GET['document_url'],$_GET['document_date']);
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR EL DOCUMENTO DE LA CITA MEDICA')
-    );
+    
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR EL DOCUMENTO DE LA CITA MEDICA');
+    echo json_encode($error_arraylist);
 }
 
 ?>
