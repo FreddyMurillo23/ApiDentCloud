@@ -25,7 +25,7 @@ $result = $post->get_img_one_producto($_GET['id']);
 //CHECK IF ANY POSTS
 if ($result->num_rows > 0) {
     //POST ARRAY
-    $post_arraylist = array();
+    $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
     $post_arraylist['DATOS_IMG_PRODUCTO'] = array();
 
     while ($row = mysqli_fetch_assoc($result)) {

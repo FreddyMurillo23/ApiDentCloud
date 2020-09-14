@@ -25,7 +25,7 @@
     
         if ($result->num_rows > 0) {
             //POST ARRAY
-            $post_arraylist = array();
+            $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
             $post_arraylist['DATOS_EMPLEADO'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {

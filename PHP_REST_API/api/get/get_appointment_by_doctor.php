@@ -21,7 +21,7 @@
     
         if ($result->num_rows > 0) {
             //POST ARRAY
-            $post_arraylist = array();
+            $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
             $post_arraylist['LISTA_CITAS'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
