@@ -7,7 +7,6 @@ header('Content-Type: application/json');  //FOR USE JSON
 
     //POST ARRAY
     $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
-    // $post_arraylist['JsonType'] = array();
     $post_arraylist['DATOS_CLIENTE'] = array();
 
 
@@ -23,6 +22,10 @@ header('Content-Type: application/json');  //FOR USE JSON
         
     //TURN IT TO JSON & OUTPUT
     echo json_encode($post_arraylist);
+
+
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
+    echo json_encode($error_arraylist);
 
 
 
