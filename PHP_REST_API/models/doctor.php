@@ -43,6 +43,57 @@ include_once '../../config/Database.php';
             return $result;
         }        
 
+        //GET DOCUMENTS BY APPOINTMENT
+        public function get_documents_by_appointment($appointment_id){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_documents_by_appointment("'.$appointment_id.'")';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        } 
+
+        //GET DOCUMENTS BY PATIENT
+        public function get_documents_by_patient($user_email_patient){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_documents_by_patient("'.$user_email_patient.'")';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        } 
+
+        //GET DOCUMENTS BY PATIENT
+        public function get_drug_prescription_by_appointment($medical_appointment_id){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_drug_prescription_by_appointment("'.$medical_appointment_id.'")';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
+
         //POST DOCTOR INTO WORKS
         public function post_doctor_works($user_data,$business_ruc,$role){
             //DATABASE CONNECTION
