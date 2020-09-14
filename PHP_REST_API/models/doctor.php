@@ -9,25 +9,13 @@ include_once '../../config/Database.php';
         }
         
 
-       
-       
-        //GET COMPLETE EMPLOYED
-        public function get_empleado (){
+        //GET ACCEPT APPOINTMENT BY DOCTOR
+        public function get_accepted_appointment_by_doctor($email_doctor){
             //DATABASE CONNECTION
             $database = new Database();
             $db = $database->connect();
             //CREATE QUERY - OR USE A PROCEDURE 
-            $query = 'SELECT personas.nombres ,
-            personas.apellido_pat ,
-            personas.apellido_mat,
-            personas.fecha_registro,
-            empleados.cedula_ruc,
-            empleados.fecha_nacimiento ,
-            empleados.cargo ,
-            empleados.sexo ,
-            empleados.estado_civil  
-            FROM (empleados join personas 
-            ON ((empleados.cedula_ruc = personas.cedula_ruc)))';   
+            $query = 'CALL select_accepted_appointment_by_doctor("'.$email_doctor.'")';   
             
             //PREPARE STATEMENT
             $stmt = $db->prepare($query);
@@ -38,26 +26,13 @@ include_once '../../config/Database.php';
             return $result;
         }
 
-  
-        //GET SINGLE EMPLOYED
-        public function get_one_empleado($id){
-            //DATABASE CONNECTION   
+        //GET APPOINTMENT BY DOCTOR
+        public function get_appointment_by_doctor($email_doctor){
+            //DATABASE CONNECTION
             $database = new Database();
             $db = $database->connect();
-            
-            //CREATE QUERY OR USE A PROCEDURE
-            $query = 'SELECT personas.nombres ,
-            personas.apellido_pat ,
-            personas.apellido_mat,
-            personas.fecha_registro,
-            empleados.cedula_ruc,
-            empleados.fecha_nacimiento ,
-            empleados.cargo ,
-            empleados.sexo ,
-            empleados.estado_civil  
-            FROM (empleados join personas 
-            ON ((empleados.cedula_ruc = personas.cedula_ruc)))
-            WHERE empleados.cedula_ruc LIKE "%'.$id.'%"';
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_appointment_by_doctor("'.$email_doctor.'")';   
             
             //PREPARE STATEMENT
             $stmt = $db->prepare($query);
@@ -66,9 +41,7 @@ include_once '../../config/Database.php';
             $result = mysqli_query($db,$query);
             mysqli_close($db);
             return $result;
-        }
-
-
+        }        
 
         //POST DOCTOR INTO WORKS
         public function post_doctor_works($user_data,$business_ruc,$role){
@@ -238,34 +211,6 @@ include_once '../../config/Database.php';
             mysqli_close($db);
         }
 
-
-        //PUT SINGLE EMPLEADO
-        public function put_empleado($cedruc,$fecha_n,$carg,$sex,$e_civil){
-            //DATABASE CONNECTION
-            $database = new Database();
-            $db = $database->connect();
-
-
-            $datos = array("cedruc" => $cedruc,"fecha_n" => $fecha_n,
-            "carg"=> $carg,"sex"=> $sex,"est_c"=> $e_civil);
-
-            $carg = utf8_decode($datos["carg"]);
-            $sql = "CALL update_empleado('".$datos["cedruc"]."','".$datos["fecha_n"]."','".$carg."','".$datos["sex"]."','".$datos["est_c"]."')";
-            if($db->query($sql)){
-
-
-                echo json_encode(
-                    array('message' => 'CAMBIOS GUARDADOS CON EXITO')
-                );
-            }else{
-        
-                
-                echo json_encode(
-                    array('error'=>'ERROR AL ACTUALIZAR LOS DATOS')
-                );
-            }
-            mysqli_close($db);
-        }
 
         
         //DELETE SINGLE EMPLEADO
