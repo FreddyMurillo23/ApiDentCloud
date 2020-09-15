@@ -53,6 +53,7 @@ include_once '../../config/Database.php';
             }
             mysqli_close($db);
         }
+        
         // POST USER ALLERGIES
         public function post_create_allergies($ag_type,$ag_name,$ag_description)
         {
@@ -121,7 +122,7 @@ include_once '../../config/Database.php';
 
         }
 
-        public function post_insert_message($user_email,$user_email_emi,$message_content,$message_date,$message_type_id,$message_url_content)
+        public function post_insert_message($user_email,$user_email_emi,$message_content,$message_date,$message_type,$message_url_content)
         {
             //DATABASE CONNECTION
             $database = new Database();
@@ -131,18 +132,18 @@ include_once '../../config/Database.php';
 
             // DATA
             $datos = array("user_email" => $user_email,"user_email_emi" => $user_email_emi,"message_content" => $message_content,"message_date"=> $message_date,
-            "message_type_id"=> $message_type_id,"message_url_content"=> $message_url_content);
+            "message_type"=> $message_type,"message_url_content"=> $message_url_content);
 
             //
             $user_email1 = utf8_decode($datos["user_email"]);
             $user_email_emi1=utf8_decode($datos["user_email_emi"]);
             $message_content1=utf8_decode($datos["message_content"]);
             $message_date1=utf8_decode($datos["message_date"]);
-            $message_type_id1=utf8_decode($datos["message_type_id"]);
+            $message_type1=utf8_decode($datos["message_type"]);
             $message_url_content1=utf8_decode($datos["message_url_content"]);
 
             //
-            $sql = "CALL insert_message('".$user_email1."','".$user_email_emi1."','".$message_content1."','".$message_date1."',".$message_type_id1.",'".$message_url_content1."')";
+            $sql = "CALL insert_message('".$user_email1."','".$user_email_emi1."','".$message_content1."','".$message_date1."','".$message_type1."','".$message_url_content1."')";
             if($db->query($sql)){
 
 
@@ -160,10 +161,52 @@ include_once '../../config/Database.php';
 
         }
 
+        // Get select by chat
+        public function select_by_chat($user_email,$user_email_emi)
+        {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = "'CALL select_message_by_chat('".$user_email."','".$user_email_emi."')";   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
+
+        // POST UPDATE CHAT
+        public function update_message_by_chat($message_id)
+        {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+
+            $datos = array("message_id" => $message_id);
+
+            
+            $sql = "CALL update_message_by_chat(".$datos["message_id"].")";
+            if($db->query($sql)){
+
+
+                echo json_encode(
+                    array('message' => 'GUARDADO CON EXITO')
+                );
+            }else{
         
-
-         
-
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+        }
+        
     }
 
 
