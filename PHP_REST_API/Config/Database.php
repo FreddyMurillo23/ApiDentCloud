@@ -26,7 +26,7 @@ class Database {
             printf("   =>  Error loading character set utf8mb4: %s\n", $this->conn->error);
             exit();
         } else {
-            printf("  => Current character set: %s\n", $this->conn->character_set_name());
+            // printf("  => Current character set: %s\n", $this->conn->character_set_name());
         }
 
     }

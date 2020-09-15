@@ -41,9 +41,8 @@ if ($result->num_rows > 0) {
     echo json_encode($post_arraylist);
 } else {
         //NO POST
-        echo json_encode(
-            array('message' => 'NO POST FOUND')
-        );
+        $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
+        echo json_encode($error_arraylist);
       }
 
 

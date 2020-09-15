@@ -15,16 +15,16 @@ $db = $database->connect();
 //INSTANTIATE BLOG POST OBJECT
 $post = new doctor($db);
 
-if(isset($_GET['disease_type'])&&isset($_GET['disease_description'])){
+if(isset($_GET['user_email'])&&isset($_GET['disease_id'])){
 
-$post -> post_disease(
-$_GET['disease_type'],
-$_GET['disease_description']
+$post -> post_user_disease(
+$_GET['user_email'],
+$_GET['disease_id']
 );
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA INGRESAR LA ENFERMEDADES');
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'SELECCIONE LA ENFERMEDAD A VINCULAR');
     echo json_encode($error_arraylist);
 }
 

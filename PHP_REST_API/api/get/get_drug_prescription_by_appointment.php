@@ -14,35 +14,36 @@
     //INSTANTIATE BLOG POST OBJECT
     $post = new doctor($db);
 
-    if(isset($_GET['email_doctor'])){
+    if(isset($_GET['medical_appointment_id'])){
     
         //BLOG POST QUERY
-        $result = $post->get_accepted_appointment_by_doctor($_GET['email_doctor']);
+        $result = $post->get_drug_prescription_by_appointment($_GET['medical_appointment_id']);
     
         if ($result->num_rows > 0) {
             //POST ARRAY
             $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
-            $post_arraylist['LISTA_CITAS'] = array();
+            $post_arraylist['RECETA_CITA'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'paciente' =>utf8_encode($row['paciente']),
-                    'fecha' =>$row['fecha'],
-                    'servicio' => utf8_encode($row['servicio']),
-                    'descripcion' => utf8_encode($row['descripcion'])
+                    'medicamento' => utf8_encode($row['medicamento']),
+                    'dosis' => utf8_encode($row['dosis']),
+                    'detalles' => utf8_encode($row['detalles'])
                 );
                 //PUSH TO DATA
-                array_push($post_arraylist['LISTA_CITAS'], $post_item);
+                array_push($post_arraylist['RECETA_CITA'], $post_item);
             }
             //TURN IT TO JSON & OUTPUT
             echo json_encode($post_arraylist);
         } else {
             //NO POST
-            $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
-            echo json_encode($error_arraylist);
+            
+                $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
+                echo json_encode($error_arraylist);
+            
         }
     
     }
 
-?>        
+?>     

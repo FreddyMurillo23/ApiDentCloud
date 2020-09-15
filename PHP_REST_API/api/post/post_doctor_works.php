@@ -17,12 +17,16 @@ $post = new doctor($db);
 
 if(isset($_GET['user_data'])&&(isset($_GET['business_ruc'])&&isset($_GET['role']))){
 
-$post -> post_doctor_works($_GET['user_data'],$_GET['business_ruc'],$_GET['role']);
+$post -> post_doctor_works(
+$_GET['user_data'],
+$_GET['business_ruc'],
+$_GET['role']
+);
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR EL DOCTOR AL ESTABLECIMIENTO')
-    );
+    
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR EL DOCTOR AL ESTABLECIMIENTO');
+    echo json_encode($error_arraylist);
 }
 
 ?>
