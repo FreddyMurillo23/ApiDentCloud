@@ -131,6 +131,63 @@ include_once '../../config/Database.php';
             mysqli_close($db);
         }
 
+        
+        //POST  BUSINESS SERVICES
+        public function post_patients(
+            $user_email,
+            $business_ruc,
+            $datetime_inscription
+            ){
+                
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+
+            $datos = array(
+                "user_email" => utf8_decode($user_email),
+                "business_ruc" => utf8_decode($business_ruc),
+                "datetime_inscription"=> $datetime_inscription
+            );
+
+            $sql = "CALL link_user_business(
+                '".$datos["user_email"]."',
+                '".$datos["business_ruc"]."',
+                '".$datos["datetime_inscription"]."'
+                )";
+
+            if($db->query($sql)){
+                $error_arraylist = array('JSONTYPE'=> 'RESPONSE','MESSAGE'=> 'GUARDADO CON EXITO');
+            echo json_encode($error_arraylist);
+            }else{ 
+                $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'ERROR AL INGRESAR LOS DATOS');
+            echo json_encode($error_arraylist);
+                
+            }
+            mysqli_close($db);
+        }
+
+
+
+        //GET ACCEPT APPOINTMENT BY DOCTOR
+        public function get_patients_by_business($business_ruc){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_patient_by_business(
+            "'.$business_ruc.'"
+            )';   
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
+
 
 
 
