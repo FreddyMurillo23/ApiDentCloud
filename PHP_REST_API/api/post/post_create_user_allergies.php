@@ -17,7 +17,10 @@ $post = new User($db);
 
 if(isset($_GET['user_data'])&&isset($_GET['code_allergies'])){
 
-$post -> post_user_allergies($_GET['user_data'],$_GET['code_allergies']);
+$post -> post_user_allergies(
+$_GET['user_data'],
+$_GET['code_allergies']
+);
 
 }else{
     

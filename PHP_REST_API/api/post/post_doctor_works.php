@@ -17,7 +17,11 @@ $post = new doctor($db);
 
 if(isset($_GET['user_data'])&&(isset($_GET['business_ruc'])&&isset($_GET['role']))){
 
-$post -> post_doctor_works($_GET['user_data'],$_GET['business_ruc'],$_GET['role']);
+$post -> post_doctor_works(
+$_GET['user_data'],
+$_GET['business_ruc'],
+$_GET['role']
+);
 
 }else{
     
