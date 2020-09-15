@@ -17,7 +17,11 @@ $post = new doctor($db);
 
 if(isset($_GET['medical_appointment_id']) && (isset($_GET['drug_id']) && isset($_GET['prescription_details']))){
 
-$post -> post_drug_prescription($_GET['medical_appointment_id'],$_GET['drug_id'],$_GET['prescription_details']);
+$post -> post_drug_prescription(
+$_GET['medical_appointment_id'],
+$_GET['drug_id'],
+$_GET['prescription_details']
+);
 
 }else{
     

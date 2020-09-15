@@ -18,8 +18,14 @@ $post = new doctor($db);
 if(isset($_GET['business_ruc']) && (isset($_GET['user_email_doctor']) && isset($_GET['user_email_patient'])
 && isset($_GET['business_service_name']) && isset($_GET['commentary']) && isset($_GET['date_time']))){
 
-$post -> post_medical_appointment($_GET['business_ruc'],$_GET['user_email_doctor'],$_GET['user_email_patient']
-,$_GET['business_service_name'],$_GET['commentary'],$_GET['date_time']);
+$post -> post_medical_appointment(
+$_GET['business_ruc'],
+$_GET['user_email_doctor'],
+$_GET['user_email_patient'],
+$_GET['business_service_name'],
+$_GET['commentary'],
+$_GET['date_time']
+);
 
 }else{
 

@@ -18,8 +18,14 @@ $post = new drug($db);
 if(isset($_GET['drug_name']) && (isset($_GET['drug_compounds']) && isset($_GET['drug_indications'])
 && isset($_GET['drug_contraindications']) && isset($_GET['drug_presentation']) && isset($_GET['dosage_details']))){
 
-$post -> post_drug_register($_GET['drug_name'],$_GET['drug_compounds'],$_GET['drug_indications']
-,$_GET['drug_contraindications'],$_GET['drug_presentation'],$_GET['dosage_details']);
+$post -> post_drug_register(
+$_GET['drug_name'],
+$_GET['drug_compounds'],
+$_GET['drug_indications'],
+$_GET['drug_contraindications'],
+$_GET['drug_presentation'],
+$_GET['dosage_details']
+);
 
 }else{
     echo json_encode(
