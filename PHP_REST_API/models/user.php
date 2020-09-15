@@ -168,7 +168,7 @@ include_once '../../config/Database.php';
             $database = new Database();
             $db = $database->connect();
             //CREATE QUERY - OR USE A PROCEDURE 
-            $query = "'CALL select_message_by_chat('".$user_email."','".$user_email_emi."')";   
+            $query = "CALL select_message_by_chat('".$user_email."','".$user_email_emi."')";   
             
             //PREPARE STATEMENT
             $stmt = $db->prepare($query);
