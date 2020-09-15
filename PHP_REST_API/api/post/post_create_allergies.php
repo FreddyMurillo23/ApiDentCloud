@@ -20,8 +20,9 @@ if(isset($_GET['ag_type'])&&isset($_GET['ag_name'])&&isset($_GET['ag_description
 
 $post -> post_create_allergies($_GET['ag_type'],$_GET['ag_name'],$_GET['ag_description']);
 
+
 }else{
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE TODOS LOS CAMPOS REQUERIDOS');
     echo json_encode($error_arraylist);
 }
 

@@ -15,23 +15,25 @@ $db = $database->connect();
 //INSTANTIATE BLOG POST OBJECT
 $post = new Business($db);
 
-if(isset($_GET['business_ruc']))
+if(isset($_GET['service_business_ruc']))
 {
 
-    $post -> post_Business(
-        $_GET['business_ruc'],
-        $_GET['business_name'],
-        $_GET['business_phone'],
-        $_GET['province'],
-        $_GET['canton'],
-        $_GET['business_location']
+    $post -> post_Business_Services(
+        $_GET['service_business_ruc'],
+        $_GET['service_description'],
+        $_GET['service_duration'],
+        $_GET['service_cost'],
+        $_GET['service_url_image']
     );
 
 
-
 }else{
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE EL RUC DEL NEGOCIO');
+    $error_arraylist = array(
+        'JSONTYPE'=> 'ERROR',
+        'MESSAGE'=> 'INGRESE EL RUC DEL NEGOCIO'
+    );
     echo json_encode($error_arraylist);
 }
 
 ?> 
+
