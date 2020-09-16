@@ -15,17 +15,17 @@ $db = $database->connect();
 //INSTANTIATE BLOG POST OBJECT
 $post = new doctor($db);
 
-if(isset($_GET['user_data'])&&(isset($_GET['business_ruc'])&&isset($_GET['role']))){
+if(isset($_GET['medical_appointment_id']) && (isset($_GET['drug_id']) && isset($_GET['prescription_details']))){
 
-$post -> post_doctor_works(
-$_GET['user_data'],
-$_GET['business_ruc'],
-$_GET['role']
+$post -> post_drug_prescription(
+$_GET['medical_appointment_id'],
+$_GET['drug_id'],
+$_GET['prescription_details']
 );
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR EL DOCTOR AL ESTABLECIMIENTO');
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA RECETA MEDICA');
     echo json_encode($error_arraylist);
 }
 

@@ -10,15 +10,25 @@ class Database {
         //DB params
         $host = 'dent-cloud.c2gdnp00za2x.us-east-1.rds.amazonaws.com';
         $db_name = 'DentCloud';
-        $username = 'gato.garcia';     
-        $password = '12345';
+        $username = 'root';     
+        $password = 'brealidad23';
         try{
             $this->conn = new mysqli ($host,$username,$password,$db_name);
-            echo 'Connected';
+            // echo 'Connected';
+                        
         }catch(SQLException $e){
             echo 'Connection Error: '.$e->getMessage();
+            // echo 'Conection try';
         } 
-        echo 'Conection try';
+        
+        // change character set to utf8 
+        if (!$this->conn->set_charset("utf8mb4")) {
+            printf("   =>  Error loading character set utf8mb4: %s\n", $this->conn->error);
+            exit();
+        } else {
+            // printf("  => Current character set: %s\n", $this->conn->character_set_name());
+        }
+
     }
 
 

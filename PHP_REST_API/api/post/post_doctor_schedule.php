@@ -15,17 +15,16 @@ $db = $database->connect();
 //INSTANTIATE BLOG POST OBJECT
 $post = new doctor($db);
 
-if(isset($_GET['user_data'])&&(isset($_GET['business_ruc'])&&isset($_GET['role']))){
+if(isset($_GET['doctor_schedule_email']) && isset($_GET['doctor_schedule_id'])){
 
-$post -> post_doctor_works(
-$_GET['user_data'],
-$_GET['business_ruc'],
-$_GET['role']
+$post -> post_doctor_schedule(
+$_GET['doctor_schedule_email'],
+$_GET['doctor_schedule_id']
 );
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR EL DOCTOR AL ESTABLECIMIENTO');
+    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'SELECCIONE EL HORARIO A GUARDAR');
     echo json_encode($error_arraylist);
 }
 
