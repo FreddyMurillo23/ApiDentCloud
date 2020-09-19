@@ -206,9 +206,43 @@ include_once '../../config/Database.php';
             }
             mysqli_close($db);
         }
-        
+
+
+        // GET select_user_data_individual 
+        public function select_user_data($user_email)
+        {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = "CALL select_user_data('".$user_email."')";   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
+
+
+        public function select_user_data_global(){
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = "Call select_user_data_global()";   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
     }
-
-
+        
 
 ?>
