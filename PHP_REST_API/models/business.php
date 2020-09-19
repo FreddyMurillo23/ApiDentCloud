@@ -188,7 +188,52 @@ include_once '../../config/Database.php';
             return $result;
         }
 
+        //GET LAST 3 PATIENT RECENT BY BUSINESS
+        public function get_recent_patient_by_business(
+            $business_ruc
+            )
+            {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_recent_patient_by_business(
+            "'.$business_ruc.'"
+            )';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
 
+
+        //GET LAST 3 SERVICE RECENT BY BUSINESS
+        public function get_recent_service_by_business(
+            $business_ruc
+            )
+            {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_recent_service_by_business(
+            "'.$business_ruc.'"
+            )';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
 
 
         //DELETE SINGLE CLIENT

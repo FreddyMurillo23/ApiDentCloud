@@ -5,34 +5,36 @@
 
     //INCLUDES
     include_once '../../config/Database.php';
-    include_once '../../models/business.php';
+    include_once '../../models/publications.php';
 
     //INSTANTIATE DB & CONNECT
     $database = new Database();
     $db = $database->connect();
 
     //INSTANTIATE BLOG POST OBJECT
-    $post = new Business($db);
+    $post = new Publications($db);
 
     
         //BLOG POST QUERY
-        $result = $post->get_patients_by_business($_GET['business_ruc']);
+        $result = $post->get_publications_by_user($_GET['user_email']);
         // echo $result;
     // echo $result->num_rows;
         if ($result->num_rows > 0) {
             //POST ARRAY
             $post_arraylist = array('jsontype'=> 'response');
-            $post_arraylist['pacientes'] = array();
+            $post_arraylist['publicaciones_usuario'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'paciente' => utf8_encode($row['paciente']),
-                    'correo' => utf8_encode($row['correo']),
-                    'fecha_inscripcion' => utf8_encode($row['fecha_inscripcion'])
+                    'usuario' => utf8_encode($row['usuario']),
+                    'descripcion' => utf8_encode($row['descripcion']),
+                    'archivo' => utf8_encode($row['archivo']),
+                    'fecha' => utf8_encode($row['fecha']),
+                    'negocio' => utf8_encode($row['negocio'])
                 );
                 //PUSH TO DATA
-                array_push($post_arraylist['pacientes'], $post_item);
+                array_push($post_arraylist['publicaciones_usuario'], $post_item);
             }
             //TURN IT TO JSON & OUTPUT
             echo json_encode($post_arraylist);

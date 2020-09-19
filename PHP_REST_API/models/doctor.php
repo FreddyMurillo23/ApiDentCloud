@@ -32,9 +32,34 @@ include_once '../../config/Database.php';
             return $result;
         }
 
+        //GET CONTENT OF THE MEDICAL APPOINTMENT REQUEST
+        public function get_content_appointment(
+            $id
+            )
+            {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_content_appointment(
+            "'.$id.'"
+            )';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
+
+
         //GET APPOINTMENT BY DOCTOR
         public function get_appointment_by_doctor(
-            $email_doctor
+            $email_doctor,
+            $state
             ){
 
             //DATABASE CONNECTION
@@ -43,7 +68,8 @@ include_once '../../config/Database.php';
             
             //CREATE QUERY - OR USE A PROCEDURE 
             $query = 'CALL select_appointment_by_doctor(
-            "'.$email_doctor.'"
+            "'.$email_doctor.'",
+            "'.$state.'"
             )';   
             
             //PREPARE STATEMENT
@@ -54,6 +80,30 @@ include_once '../../config/Database.php';
             mysqli_close($db);
             return $result;
         }        
+
+
+        //GET PATIENT WHO WAS TREATED BY A DOCTOR
+        public function get_patient_by_doctor(
+            $email_doctor
+            )
+            {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_patient_by_doctor(
+            "'.$email_doctor.'"
+            )';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
 
         //GET DOCUMENTS BY APPOINTMENT
         public function get_documents_by_appointment(
@@ -467,6 +517,45 @@ include_once '../../config/Database.php';
             $sql = "CALL update_appointment_state(
             '".$datos["id_appointment"]."',
             '".$datos["state"]."'
+            )";
+            
+            if($db->query($sql)){
+
+                echo json_encode(
+                    array('message' => 'CAMBIOS GUARDADOS CON EXITO')
+                );
+            }else{
+        
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL ACTUALIZAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+        }
+
+        //PUT APPOINTMENT DATETIME AND SERVICE NAME
+        public function put_appointment(
+            $id_appointment,
+            $business_service_name,
+            $date_time
+            ){
+
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+
+
+            $datos = array(
+            "id_appointment" => utf8_decode($id_appointment),
+            "business_service_name" => utf8_decode($business_service_name),
+            "date_time" => $date_time
+            );
+
+            $sql = "CALL update_appointment(
+            '".$datos["id_appointment"]."',
+            '".$datos["business_service_name"]."',
+            '".$datos["date_time"]."'
             )";
             
             if($db->query($sql)){
