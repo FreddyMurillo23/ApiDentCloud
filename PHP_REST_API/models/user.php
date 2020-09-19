@@ -226,7 +226,7 @@ include_once '../../config/Database.php';
             return $result;
         }
 
-
+        /// GET user_data_global
         public function select_user_data_global(){
             //DATABASE CONNECTION
             $database = new Database();
@@ -242,6 +242,27 @@ include_once '../../config/Database.php';
             mysqli_close($db);
             return $result;
         }
+         
+        /////
+        public function select_by_login($user_email)
+        {
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = "CALL select_login('".$user_email."')";   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+
+        }
+        
+        
     }
         
 
