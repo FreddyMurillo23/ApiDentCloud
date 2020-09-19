@@ -119,7 +119,7 @@ include_once '../../config/Database.php';
 
 
 
-        //GET ACCEPT APPOINTMENT BY DOCTOR
+        //GET PUBLICATIONS
         public function get_publications(){
             //DATABASE CONNECTION
             $database = new Database();
@@ -137,7 +137,52 @@ include_once '../../config/Database.php';
             return $result;
         }
 
+        //GET PUBLICATIONS BY BUSINESS
+        public function get_publications_by_business(
+            $business_ruc
+            ){
 
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_publications_by_business(
+            "'.$business_ruc.'"
+            )';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        } 
+
+
+        //GET PUBLICATIONS BY USER
+        public function get_publications_by_user(
+            $user_email
+            ){
+
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_publications_by_user(
+            "'.$user_email.'"
+            )';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        } 
 
 
         //DELETE SINGLE CLIENT

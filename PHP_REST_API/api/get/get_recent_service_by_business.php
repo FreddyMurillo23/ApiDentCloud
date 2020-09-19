@@ -16,23 +16,21 @@
 
     
         //BLOG POST QUERY
-        $result = $post->get_patients_by_business($_GET['business_ruc']);
+        $result = $post->get_recent_service_by_business($_GET['business_ruc']);
         // echo $result;
     // echo $result->num_rows;
         if ($result->num_rows > 0) {
             //POST ARRAY
             $post_arraylist = array('jsontype'=> 'response');
-            $post_arraylist['pacientes'] = array();
+            $post_arraylist['servicios_reciente'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'paciente' => utf8_encode($row['paciente']),
-                    'correo' => utf8_encode($row['correo']),
-                    'fecha_inscripcion' => utf8_encode($row['fecha_inscripcion'])
+                    'servicio' => utf8_encode($row['servicio'])
                 );
                 //PUSH TO DATA
-                array_push($post_arraylist['pacientes'], $post_item);
+                array_push($post_arraylist['servicios_reciente'], $post_item);
             }
             //TURN IT TO JSON & OUTPUT
             echo json_encode($post_arraylist);
