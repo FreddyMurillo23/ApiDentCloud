@@ -176,6 +176,59 @@ include_once '../../config/Database.php';
             return $result;
         }
 
+        //GET APPOINTMENT BY USER NAME
+        public function get_appointment_by_user_name(
+            $user_name,
+            $email_doctor
+            ){
+
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_appointment_by_user_name(
+            "'.$user_name.'",
+            "'.$email_doctor.'"
+            )';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
+
+        //GET APPOINTMENT BY DATETIME
+        public function get_appointment_by_datetime(
+            $email_doctor,
+            $initial_interval,
+            $final_interval
+            ){
+
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_appointment_by_datetime(
+            "'.$email_doctor.'",
+            "'.$initial_interval.'",
+            "'.$final_interval.'"
+            )';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }
+
+
         //POST DOCTOR INTO WORKS
         public function post_doctor_works(
             $user_data,
