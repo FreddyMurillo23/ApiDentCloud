@@ -37,6 +37,7 @@
                         'cellphone'=>$row['cellphone'],
                         'sex' =>$row['sex'],
                         'user_type' =>$row['user_type'],
+                        'url_profile_photo'=>$row['url_profile_photo'],
                         'profession' =>$row['profession']
 
                     );
@@ -54,6 +55,7 @@
                         'cellphone'=>$row['cellphone'],
                         'sex' =>$row['sex'],
                         'user_type' =>$row['user_type'],
+                        'url_profile_photo'=>$row['url_profile_photo'],
                         'profession' =>""
                     );
 

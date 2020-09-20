@@ -261,6 +261,13 @@ include_once '../../config/Database.php';
             return $result;
 
         }
+
+        // Update 
+        public function update_by_user()
+        {
+            
+
+        }
         
         
     }

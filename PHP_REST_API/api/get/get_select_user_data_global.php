@@ -21,8 +21,7 @@
         $post_arraylist['usuario'] = array();
 
         while ($row = mysqli_fetch_assoc($result)) {
-            if($row['user_type']=="D")
-            {
+           
                 $post_item = array(
                     'user_email' =>$row['email'],
                     'password_user' =>$row['password_user'],
@@ -35,26 +34,7 @@
                     'user_type' =>$row['user_type'],
                     'profession' =>$row['profession']
 
-                );
-
-            }
-            else
-            {
-                $post_item = array(
-                    'user_email' =>$row['email'],
-                    'password_user' =>$row['password_user'],
-                    'user_dni' => $row['user_dni'],
-                    'user_names' => $row['user_names'],
-                    'user_last_names'=> $row['user_last_names'],
-                    'birthdate'=>$row['birthdate'],
-                    'cellphone'=>$row['cellphone'],
-                    'sex' =>$row['sex'],
-                    'user_type' =>$row['user_type'],
-                    'profession' =>""
-                );
-
-            }
-            
+                );            
             //PUSH TO DATA
             array_push($post_arraylist['usuario'], $post_item);
         }
