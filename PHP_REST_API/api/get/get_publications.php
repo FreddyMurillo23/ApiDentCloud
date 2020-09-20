@@ -22,19 +22,22 @@
         if ($result->num_rows > 0) {
             //POST ARRAY
             $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
-            $post_arraylist['PUBLICACIONES'] = array();
+            $post_arraylist['publicaciones'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'USUARIO' => utf8_encode($row['usuario']),
-                    'DESCRIPCION' => utf8_encode($row['descripcion']),
-                    'ARCHIVO' => utf8_encode($row['archivo']),
-                    'FECHA' => utf8_encode($row['fecha']),
-                    'NEGOCIO' => utf8_encode($row['negocio'])
+                    'usuario' => utf8_encode($row['usuario']),
+                    'descripcion' => utf8_encode($row['descripcion']),
+                    'archivo' => utf8_encode($row['archivo']),
+                    'fecha' => utf8_encode($row['fecha']),
+                    'negocio' => utf8_encode($row['negocio']),
+                    'inicial_negocio' => utf8_encode($row['inicial_negocio']),
+                    'inicial_usuario' => utf8_encode($row['inicial_usuario']),
+                    'foto_perfil' => utf8_encode($row['foto_perfil'])
                 );
                 //PUSH TO DATA
-                array_push($post_arraylist['PUBLICACIONES'], $post_item);
+                array_push($post_arraylist['publicaciones'], $post_item);
             }
             //TURN IT TO JSON & OUTPUT
             echo json_encode($post_arraylist);
