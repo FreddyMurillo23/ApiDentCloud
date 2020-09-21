@@ -243,7 +243,7 @@ include_once '../../config/Database.php';
             return $result;
         }
          
-        /////
+        ///// Get select_by_login
         public function select_by_login($user_email)
         {
             //DATABASE CONNECTION
@@ -262,12 +262,52 @@ include_once '../../config/Database.php';
 
         }
 
-        // Update 
-        public function update_by_user()
+        // Update user_data
+       /* public function update_by_user(
+        $user_email,
+        $password,
+        $user_dni,
+        $user_names,
+        $user_last_names,
+        $birthdate,
+        $cellphone,
+        $sex,
+        $user_type,
+        $doctor_profession
+        )
         {
-            
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
 
-        }
+        
+            $datos = array(
+            "medical_appointment_id" => $medical_appointment_id,
+            "drug_id" => $drug_id,
+            "prescription_details"=> utf8_decode($prescription_details)
+            );
+            
+            $sql = "CALL insert_drug_prescription(
+            '".$datos["medical_appointment_id"]."',
+            '".$datos["drug_id"]."',
+            '".$datos["prescription_details"]."'
+            )";
+
+            if($db->query($sql)){
+                echo json_encode(
+                    array('message' => 'GUARDADO CON EXITO')
+                );
+            }else{
+                
+                echo json_encode(
+                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
+                );
+            }
+            mysqli_close($db);
+
+        
+
+        }*/
         
         
     }
