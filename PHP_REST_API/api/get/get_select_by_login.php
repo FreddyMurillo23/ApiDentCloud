@@ -30,12 +30,12 @@
                  if($_GET['password']==$row['user_password'])
                  {
                     $acceptado_arraylist = array('message' => 'INGRESO CORRECTO');
-                    echo json_encode($error_arraylist);
+                    echo json_encode($acceptado_arraylist);
                  }
                  else
                  {
                     $acceptado_arraylist = array('message' => 'CONTRASEÑA INCORRECTA');
-                    echo json_encode($error_arraylist);
+                    echo json_encode($acceptado_arraylist);
                  }
                 
                 //PUSH TO DATA
@@ -45,10 +45,15 @@
             //echo json_encode($post_arraylist);
         } else {
             //NO POST
-            $error_arraylist = array('message' => 'INGRESE LOS CAMPOS NECESARIOS O NO EXISTE EL CORREO');
+            $error_arraylist = array('message' => 'NO EXISTE EL CORREO');
             echo json_encode($error_arraylist);
         }
 
+    }
+    else
+    {
+        $error_arraylist = array('message' => 'INGRESE LOS CAMPOS NECESARIOS');
+        echo json_encode($error_arraylist);
     }
    
 
