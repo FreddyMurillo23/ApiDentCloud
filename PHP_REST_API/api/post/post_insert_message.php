@@ -20,9 +20,9 @@ if(isset($_GET['user_email'])&&isset($_GET['user_email_emi'])&&isset($_GET['mess
 $post -> post_insert_message($_GET['user_email'],$_GET['user_email_emi'],$_GET['message_content'],$_GET['message_date'],$_GET['message_type'],$_GET['message_url_content']);
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS PARA LOS MENSAJES')
-    );
+        
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS PARA LOS MENSAJES');
+    echo json_encode($error_arraylist);
 }
 
 ?>

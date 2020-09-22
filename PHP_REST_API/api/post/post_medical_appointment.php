@@ -29,7 +29,7 @@ $_GET['date_time']
 
 }else{
 
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA CITA MEDICA');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA CITA MEDICA');
     echo json_encode($error_arraylist);
 }
 

@@ -24,7 +24,7 @@ $_GET['disease_id']
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'SELECCIONE LA ENFERMEDAD A VINCULAR');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'SELECCIONE LA ENFERMEDAD A VINCULAR');
     echo json_encode($error_arraylist);
 }
 

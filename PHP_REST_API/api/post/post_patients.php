@@ -27,7 +27,7 @@ if(isset($_GET['business_ruc'])&& isset($_GET['user_email']))
 
 
 }else{
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE EL RUC DEL NEGOCIO Y EL CORREO DEL USUARIO QUE SE DESEA REGISTRAR');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE EL RUC DEL NEGOCIO Y EL CORREO DEL USUARIO QUE SE DESEA REGISTRAR');
     echo json_encode($error_arraylist);
 }
 

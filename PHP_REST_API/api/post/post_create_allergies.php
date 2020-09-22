@@ -26,7 +26,7 @@ $_GET['ag_description']
 
 
 }else{
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE TODOS LOS CAMPOS REQUERIDOS');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE TODOS LOS CAMPOS REQUERIDOS');
     echo json_encode($error_arraylist);
 }
 

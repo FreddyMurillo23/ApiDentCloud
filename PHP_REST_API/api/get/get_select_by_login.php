@@ -38,7 +38,7 @@
             echo json_encode($post_arraylist);
         } else {
             //NO POST
-            $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
+            $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'NO POST FOUND');
             echo json_encode($error_arraylist);
         }
 

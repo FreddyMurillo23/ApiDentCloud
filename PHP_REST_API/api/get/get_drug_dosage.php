@@ -19,8 +19,8 @@
     
         if ($result->num_rows > 0) {
             //POST ARRAY
-            $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
-            $post_arraylist['DOSIS_MEDICINAS'] = array();
+            $post_arraylist = array('jsontype'=> 'response');
+            $post_arraylist['dosis_medicinas'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
     
@@ -30,14 +30,14 @@
                     'dosificacion' => utf8_encode($row['dosificacion'])
                 );
                 //PUSH TO DATA
-                array_push($post_arraylist['DOSIS_MEDICINAS'], $post_item);
+                array_push($post_arraylist['dosis_medicinas'], $post_item);
             }
             //TURN IT TO JSON & OUTPUT
             echo json_encode($post_arraylist);
         } else {
             //NO POST
             
-                $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
+                $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'NO POST FOUND');
                 echo json_encode($error_arraylist);
             
         }

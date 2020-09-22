@@ -23,7 +23,7 @@ if(isset($_GET['user_email']) && isset($_GET['password']) && isset($_GET['user_d
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS');
     echo json_encode($error_arraylist);
 }
 

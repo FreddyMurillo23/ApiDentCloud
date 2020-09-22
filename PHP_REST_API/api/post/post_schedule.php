@@ -27,7 +27,7 @@ $_GET['schedule_extra']
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'SELECCIONE EL HORARIO A GUARDAR');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'SELECCIONE EL HORARIO A GUARDAR');
     echo json_encode($error_arraylist);
 }
 

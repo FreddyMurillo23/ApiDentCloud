@@ -30,7 +30,7 @@ if(isset($_GET['business_ruc']))
 
 
 }else{
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE EL RUC DEL NEGOCIO');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE EL RUC DEL NEGOCIO');
     echo json_encode($error_arraylist);
 }
 

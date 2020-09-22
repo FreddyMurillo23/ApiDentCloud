@@ -20,9 +20,8 @@ if(isset($_GET['message_id'])){
     
     $post ->update_message_by_chat($_GET['message_id']);
     }else{
-        echo json_encode(
-            array('message' => 'INGRESE LOS CAMPOS NECESARIOs ->id_message falta')
-        );
+        $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'id_message falta');
+        echo json_encode($error_arraylist);
     }
 
 

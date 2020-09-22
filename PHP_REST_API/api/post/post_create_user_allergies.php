@@ -24,7 +24,7 @@ $_GET['code_allergies']
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA LAS ALERGIAS');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS PARA LAS ALERGIAS');
     echo json_encode($error_arraylist);
 }
 

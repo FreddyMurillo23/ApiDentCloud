@@ -25,7 +25,7 @@ $_GET['prescription_details']
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA RECETA MEDICA');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR LA RECETA MEDICA');
     echo json_encode($error_arraylist);
 }
 

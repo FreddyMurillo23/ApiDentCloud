@@ -21,8 +21,8 @@
     
         if ($result->num_rows > 0) {
             //POST ARRAY
-            $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
-            $post_arraylist['CHAT_SELECCIONADO'] = array();
+            $post_arraylist = array('jsontype'=> 'response');
+            $post_arraylist['chat_seleccionado'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
     
@@ -37,15 +37,15 @@
                     'message_url_content' =>$row['message_url_content']
                 );
                 //PUSH TO DATA
-                array_push($post_arraylist['CHAT_SELECCIONADO'], $post_item);
+                array_push($post_arraylist['chat_seleccionado'], $post_item);
             }
             //TURN IT TO JSON & OUTPUT
             echo json_encode($post_arraylist);
         } else {
             //NO POST
-            echo json_encode(
-                array('message' => 'NO POST FOUND')
-            );
+                        
+            $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'NO POST FOUND');
+            echo json_encode($error_arraylist);
         }
     
     }

@@ -21,8 +21,8 @@
     
         if ($result->num_rows > 0) {
             //POST ARRAY
-            $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
-            $post_arraylist['CITA_ACCEPTADA'] = array();
+            $post_arraylist = array('jsontype'=> 'response');
+            $post_arraylist['cita_acceptada'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
     
@@ -33,13 +33,13 @@
                     'descripcion' => utf8_encode($row['descripcion'])
                 );
                 //PUSH TO DATA
-                array_push($post_arraylist['CITA_ACCEPTADA'], $post_item);
+                array_push($post_arraylist['cita_acceptada'], $post_item);
             }
             //TURN IT TO JSON & OUTPUT
             echo json_encode($post_arraylist);
         } else {
             //NO POST
-            $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
+            $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'NO POST FOUND');
             echo json_encode($error_arraylist);
         }
     

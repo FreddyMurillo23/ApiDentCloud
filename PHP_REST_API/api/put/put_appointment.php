@@ -22,7 +22,7 @@ if(isset($_GET['id_appointment']) && (isset($_GET['business_service_name'])
     $post -> put_appointment($_GET['id_appointment'],$_GET['business_service_name'],$_GET['date_time']);
     }else{
         
-        $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS -> identificador de cita, fecha, hora y servicio');
+        $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS -> identificador de cita, fecha, hora y servicio');
     echo json_encode($error_arraylist);
     }
 

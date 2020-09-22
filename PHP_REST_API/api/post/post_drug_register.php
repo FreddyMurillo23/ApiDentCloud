@@ -28,9 +28,9 @@ $_GET['dosage_details']
 );
 
 }else{
-    echo json_encode(
-        array('message' => 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR EL MEDICAMENTO')
-    );
+    
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS PARA AGREGAR EL MEDICAMENTO');
+    echo json_encode($error_arraylist);
 }
 
 ?>

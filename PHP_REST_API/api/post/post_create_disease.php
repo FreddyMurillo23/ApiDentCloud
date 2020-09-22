@@ -24,7 +24,7 @@ $_GET['disease_description']
 
 }else{
     
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS PARA INGRESAR LA ENFERMEDADES');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS PARA INGRESAR LA ENFERMEDADES');
     echo json_encode($error_arraylist);
 }
 

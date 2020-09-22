@@ -28,8 +28,8 @@ if(isset($_GET['frequent_questions_service_id']))
 
 }else{
     $error_arraylist = array(
-        'JSONTYPE'=> 'ERROR',
-        'MESSAGE'=> 'INGRESE EL ID DEL SERVICIO AL QUE AGREGARA LA PREGUNTA'
+        'jsontype'=> 'ERROR',
+        'message'=> 'INGRESE EL ID DEL SERVICIO AL QUE AGREGARA LA PREGUNTA'
     );
     echo json_encode($error_arraylist);
 }

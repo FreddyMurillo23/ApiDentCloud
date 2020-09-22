@@ -26,7 +26,7 @@ if(isset($_GET['publication_id']))
 
 
 }else{
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE TODOS LOS DATOS CORRECTAMENTE');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE TODOS LOS DATOS CORRECTAMENTE');
     echo json_encode($error_arraylist);
 }
 

@@ -21,7 +21,7 @@
     // echo $result->num_rows;
         if ($result->num_rows > 0) {
             //POST ARRAY
-            $post_arraylist = array('JSONTYPE'=> 'RESPONSE');
+            $post_arraylist = array('jsontype'=> 'response');
             $post_arraylist['publicaciones'] = array();
     
             while ($row = mysqli_fetch_assoc($result)) {
@@ -44,7 +44,7 @@
         } else {
             //NO POST
             
-                $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'NO POST FOUND');
+                $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'NO POST FOUND');
                 echo json_encode($error_arraylist);
             
         }

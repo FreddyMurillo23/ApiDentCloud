@@ -21,7 +21,7 @@ if(isset($_GET['id_appointment'])&& isset($_GET['state'])){
     $post -> put_appointment_state($_GET['id_appointment'],$_GET['state']);
     }else{
         
-        $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS -> identificador de cita y el estado');
+        $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS -> identificador de cita y el estado');
     echo json_encode($error_arraylist);
     }
 

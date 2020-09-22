@@ -20,7 +20,7 @@ if(isset($_GET['prescription_id'])&& isset($_GET['drug_id'])&& isset($_GET['pres
     $post -> put_drug_prescription($_GET['prescription_id'],$_GET['drug_id'],$_GET['prescription_details']);
     }else{
         
-        $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE LOS CAMPOS NECESARIOS -> identificador de receta e identificador del medicamento');
+        $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE LOS CAMPOS NECESARIOS -> identificador de receta e identificador del medicamento');
     echo json_encode($error_arraylist);
     }
 

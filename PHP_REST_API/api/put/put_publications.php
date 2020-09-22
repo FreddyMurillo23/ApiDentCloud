@@ -29,7 +29,7 @@ if(isset($_GET['business_ruc'])&& isset($_GET['user_email_doctor'])&&isset($_GET
 
 
 }else{
-    $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'INGRESE TODOS LOS DATOS CORRECTAMENTE');
+    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE TODOS LOS DATOS CORRECTAMENTE');
     echo json_encode($error_arraylist);
 }
 
