@@ -15,7 +15,7 @@
     $post = new User($db);
 
 
-    if(isset($_GET['user_email']))
+    if(isset($_GET['user_email'])&&isset($_GET['password']))
     {
         $result = $post->select_by_login($_GET['user_email']);
     
@@ -24,24 +24,36 @@
             $post_arraylist = array('jsontype'=> 'response');
             $post_arraylist['login'] = array();
     
-            while ($row = mysqli_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
                 
-                    $post_item = array(
-                        'user_email' =>$row['user_email'],
-                        'user_password' =>$row['user_password']
-                    );
+                 if($_GET['password']==$row['user_password'])
+                 {
+                    $acceptado_arraylist = array('message' => 'INGRESO CORRECTO');
+                    echo json_encode($acceptado_arraylist);
+                 }
+                 else
+                 {
+                    $acceptado_arraylist = array('message' => 'CONTRASEÑA INCORRECTA');
+                    echo json_encode($acceptado_arraylist);
+                 }
                 
                 //PUSH TO DATA
-                array_push($post_arraylist['login'], $post_item);
+                //array_push($post_arraylist['login'], $post_item);
             }
             //TURN IT TO JSON & OUTPUT
-            echo json_encode($post_arraylist);
+            //echo json_encode($post_arraylist);
         } else {
             //NO POST
-            $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'NO POST FOUND');
+            $error_arraylist = array('message' => 'NO EXISTE EL CORREO');
             echo json_encode($error_arraylist);
         }
 
+    }
+    else
+    {
+        $error_arraylist = array('message' => 'INGRESE LOS CAMPOS NECESARIOS');
+        echo json_encode($error_arraylist);
     }
    
 
