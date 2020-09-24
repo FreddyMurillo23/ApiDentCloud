@@ -228,6 +228,25 @@ include_once '../../config/Database.php';
             return $result;
         }
 
+        //GET ALL DOCTORS DATA
+        public function get_all_doctors(){
+
+            //DATABASE CONNECTION
+            $database = new Database();
+            $db = $database->connect();
+            
+            //CREATE QUERY - OR USE A PROCEDURE 
+            $query = 'CALL select_all_doctors()';   
+            
+            //PREPARE STATEMENT
+            $stmt = $db->prepare($query);
+            
+            //EXECUTE QUERY
+            $result = mysqli_query($db,$query);
+            mysqli_close($db);
+            return $result;
+        }   
+
 
         //POST DOCTOR INTO WORKS
         public function post_doctor_works(
