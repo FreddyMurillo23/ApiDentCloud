@@ -27,7 +27,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'paciente' =>utf8_encode($row['paciente']),
+                    'paciente' =>$row['paciente'],
                     'correo' => utf8_encode($row['correo'])
                 );
                 //PUSH TO DATA
@@ -35,6 +35,15 @@
             }
             //TURN IT TO JSON & OUTPUT
             echo json_encode($post_arraylist);
+            //$post_item = array_map('htmlentities',$post_item);
+
+             //encode
+           // $json = html_entity_decode(json_encode($post_item));
+
+            //Output: {"nome":"Paição","cidade":"São Paulo"}
+            //echo $json;
+
+
         } else {
             //NO POST
             $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'NO POST FOUND');
