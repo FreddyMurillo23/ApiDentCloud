@@ -301,15 +301,30 @@ include_once '../../config/Database.php';
             '".$datos["doctor_profession"]."'
             )";
 
-            if($db->query($sql)){
-                echo json_encode(
-                    array('message' => 'Datos Actualizados con exito')
-                );
+        if ($db->query($sql)) {
+            //POST ARRAY
+            $post_arraylist = array('jsontype' => 'response');
+            $post_arraylist['respuesta-obtenida'] = array();
+
+            $post_item = array(
+                'message' => 'Datos Actualizados'
+            );
+            //PUSH TO DATA
+            array_push($post_arraylist['cita_acceptada'], $post_item);
+            echo json_encode($post_arraylist);
+
             }else{
+                //POST ARRAY
+            $post_arraylist = array('jsontype' => 'response');
+            $post_arraylist['respuesta-obtenida'] = array();
+
+            $post_item = array(
+                'message' => 'Error ingresar todos los campos'
+            );
+            //PUSH TO DATA
+            array_push($post_arraylist['cita_acceptada'], $post_item);
+            echo json_encode($post_arraylist);
                 
-                echo json_encode(
-                    array('error'=>'Error al ingresar los datos')
-                );
             }
             mysqli_close($db);
 
