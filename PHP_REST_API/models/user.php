@@ -304,25 +304,25 @@ include_once '../../config/Database.php';
         if ($db->query($sql)) {
             //POST ARRAY
             $post_arraylist = array('jsontype' => 'response');
-            $post_arraylist['respuesta-obtenida'] = array();
+            $post_arraylist['respuesta_obtenida'] = array();
 
             $post_item = array(
                 'message' => 'Datos Actualizados'
             );
             //PUSH TO DATA
-            array_push($post_arraylist['cita_acceptada'], $post_item);
+            array_push($post_arraylist['respuesta_obtenida'], $post_item);
             echo json_encode($post_arraylist);
 
             }else{
                 //POST ARRAY
             $post_arraylist = array('jsontype' => 'response');
-            $post_arraylist['respuesta-obtenida'] = array();
+            $post_arraylist['respuesta_obtenida'] = array();
 
             $post_item = array(
                 'message' => 'Error ingresar todos los campos'
             );
             //PUSH TO DATA
-            array_push($post_arraylist['cita_acceptada'], $post_item);
+            array_push($post_arraylist['respuesta_obtenida'], $post_item);
             echo json_encode($post_arraylist);
                 
             }
