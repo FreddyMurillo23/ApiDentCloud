@@ -24,10 +24,10 @@ include_once '../../config/Database.php';
 
 
             $datos = array(
-                "user_email" => utf8_decode($user_email),
-                "business_ruc" => utf8_decode($business_ruc),
-                "description" => utf8_decode($description),
-                "multimedia_url" => utf8_decode($multimedia_url),
+                "user_email" => $user_email,
+                "business_ruc" => $business_ruc,
+                "description" => $description,
+                "multimedia_url" => $multimedia_url,
                 "date_time"=> $date_time
             );
 
@@ -63,9 +63,9 @@ include_once '../../config/Database.php';
 
 
             $datos = array(
-                "publication_id" => utf8_decode($publication_id),
-                "business_ruc" => utf8_decode($business_ruc),
-                "user_email_doctor" => utf8_decode($user_email_doctor),
+                "publication_id" => $publication_id,
+                "business_ruc" => $business_ruc,
+                "user_email_doctor" => $user_email_doctor,
                 "publication_state" => $publication_state
             );
 

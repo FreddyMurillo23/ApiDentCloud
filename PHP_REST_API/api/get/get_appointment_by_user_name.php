@@ -27,15 +27,15 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'nombre' =>utf8_encode($row['nombre']),
-                    'apellido' =>utf8_encode($row['apellido']),
+                    'nombre' =>$row['nombre'],
+                    'apellido' =>$row['apellido'],
                     'id_cita' => $row['id_cita'],
-                    'correo_paciente' =>utf8_encode($row['correo_paciente']),
-                    'servicio' =>utf8_encode($row['servicio']),
-                    'descripcion' =>utf8_encode($row['descripcion']),
+                    'correo_paciente' =>$row['correo_paciente'],
+                    'servicio' =>$row['servicio'],
+                    'descripcion' =>$row['descripcion'],
                     'fecha' =>$row['fecha'],
-                    'estado' =>utf8_encode($row['estado']),
-                    'negocio' =>utf8_encode($row['negocio'])
+                    'estado' =>$row['estado'],
+                    'negocio' =>$row['negocio']
                 );
                 //PUSH TO DATA
                 array_push($post_arraylist['historial'], $post_item);

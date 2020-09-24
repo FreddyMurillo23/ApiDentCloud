@@ -241,9 +241,9 @@ include_once '../../config/Database.php';
             $db = $database->connect();
 
             $datos = array(
-            "user_data" => utf8_decode($user_data),
+            "user_data" => $user_data,
             "business_ruc" => $business_ruc,
-            "role"=> utf8_decode($role)
+            "role"=> $role
             );
 
             $sql = "CALL insert_doctor_works(
@@ -284,10 +284,10 @@ include_once '../../config/Database.php';
 
             $datos = array(
             "business_ruc" => $business_ruc,
-            "user_email_doctor" => utf8_decode($user_email_doctor),
-            "user_email_patient"=> utf8_decode($user_email_patient),
-            "business_service_name"=> utf8_decode($business_service_name),
-            "commentary"=> utf8_decode($commentary),
+            "user_email_doctor" => $user_email_doctor,
+            "user_email_patient"=> $user_email_patient,
+            "business_service_name"=> $business_service_name,
+            "commentary"=> $commentary,
             "date_time"=> $date_time
             );
         
@@ -331,9 +331,9 @@ include_once '../../config/Database.php';
         
             $datos = array(
             "appointment_id" => $appointment_id,
-            "document_description" => utf8_decode($document_description),
-            "document_type"=> utf8_decode($document_type),
-            "document_url"=> utf8_decode($document_url),
+            "document_description" => $document_description,
+            "document_type"=> $document_type,
+            "document_url"=> $document_url,
             "document_date"=> $document_date
             );
 
@@ -376,7 +376,7 @@ include_once '../../config/Database.php';
             $datos = array(
             "medical_appointment_id" => $medical_appointment_id,
             "drug_id" => $drug_id,
-            "prescription_details"=> utf8_decode($prescription_details)
+            "prescription_details"=> $prescription_details
             );
             
             $sql = "CALL insert_drug_prescription(
@@ -411,8 +411,8 @@ include_once '../../config/Database.php';
             
             // DATA
             $datos = array(
-            "disease_type" => utf8_decode($disease_type),
-            "disease_description" => utf8_decode($disease_description)
+            "disease_type" => $disease_type,
+            "disease_description" => $disease_description
             );
             
             $sql = "CALL create_disease(
@@ -447,7 +447,7 @@ include_once '../../config/Database.php';
             
             // DATA
             $datos = array(
-            "user_email" => utf8_decode($user_email),
+            "user_email" => $user_email,
             "disease_id" => $disease_id
             );
             
@@ -489,7 +489,7 @@ include_once '../../config/Database.php';
             "schedule_date" => $schedule_date,
             "schedule_start" => $schedule_start,
             "schedule_final" => $schedule_final,
-            "schedule_extra" => utf8_decode($schedule_extra)            
+            "schedule_extra" => $schedule_extra            
             );
             
             $sql = "CALL insert_schedule(
@@ -526,7 +526,7 @@ include_once '../../config/Database.php';
             
             // DATA
             $datos = array(  
-            "doctor_schedule_email" => utf8_decode($doctor_schedule_email),
+            "doctor_schedule_email" => $doctor_schedule_email,
             "doctor_schedule_id" => $doctor_schedule_id          
             );
             
@@ -563,8 +563,8 @@ include_once '../../config/Database.php';
 
 
             $datos = array(
-            "id_appointment" => utf8_decode($id_appointment),
-            "state" => utf8_decode($state)
+            "id_appointment" => $id_appointment,
+            "state" => $state
             );
 
             $sql = "CALL update_appointment_state(
@@ -600,8 +600,8 @@ include_once '../../config/Database.php';
 
 
             $datos = array(
-            "id_appointment" => utf8_decode($id_appointment),
-            "business_service_name" => utf8_decode($business_service_name),
+            "id_appointment" => $id_appointment,
+            "business_service_name" => $business_service_name,
             "date_time" => $date_time
             );
 
@@ -640,9 +640,9 @@ include_once '../../config/Database.php';
 
 
             $datos = array(
-            "prescription_id" => utf8_decode($prescription_id),
-            "drug_id" => utf8_decode($drug_id),
-            "prescription_details" => utf8_decode($prescription_details)
+            "prescription_id" => $prescription_id,
+            "drug_id" => $drug_id,
+            "prescription_details" => $prescription_details
             );
 
             $sql = "CALL update_drug_prescription(

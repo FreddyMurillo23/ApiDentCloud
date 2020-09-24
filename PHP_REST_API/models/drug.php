@@ -43,12 +43,12 @@ include_once '../../config/Database.php';
             $db = $database->connect();
 
             $datos = array(
-            "drug_name" => utf8_decode($drug_name),
-            "drug_compounds" => utf8_decode($drug_compounds),
-            "drug_indications"=> utf8_decode($drug_indications),
-            "drug_contraindications" => utf8_decode($drug_contraindications),
-            "drug_presentation" => utf8_decode($drug_presentation),
-            "dosage_details" => utf8_decode($dosage_details));
+            "drug_name" => $drug_name,
+            "drug_compounds" => $drug_compounds,
+            "drug_indications"=> $drug_indications,
+            "drug_contraindications" => $drug_contraindications,
+            "drug_presentation" => $drug_presentation,
+            "dosage_details" => $dosage_details);
             
             $sql = "CALL insert_drug_register(
             '".$datos["drug_name"]."',
@@ -89,12 +89,12 @@ include_once '../../config/Database.php';
 
             $datos = array(
             "drug_id" => $drug_id,
-            "drug_name" => utf8_decode($drug_name),
-            "drug_compounds" => utf8_decode($drug_compounds),
-            "drug_indications"=> utf8_decode($drug_indications),
-            "drug_contraindications" => utf8_decode($drug_contraindications),
-            "drug_presentation" => utf8_decode($drug_presentation),
-            "dosage_details" => utf8_decode($dosage_details)
+            "drug_name" => $drug_name,
+            "drug_compounds" => $drug_compounds,
+            "drug_indications"=> $drug_indications,
+            "drug_contraindications" => $drug_contraindications,
+            "drug_presentation" => $drug_presentation,
+            "dosage_details" => $dosage_details
             );
 
             $sql = "CALL update_drug_data(

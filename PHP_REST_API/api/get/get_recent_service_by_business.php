@@ -27,7 +27,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'servicio' => utf8_encode($row['servicio'])
+                    'servicio' => $row['servicio']
                 );
                 //PUSH TO DATA
                 array_push($post_arraylist['servicios_reciente'], $post_item);

@@ -27,10 +27,10 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'email' =>utf8_encode($row['email']),
+                    'email' =>$row['email'],
                     'cedula' =>$row['cedula'],
-                    'nombres' => utf8_encode($row['nombres']),
-                    'apellidos' => utf8_encode($row['apellidos']),
+                    'nombres' =>$row['nombres'],
+                    'apellidos' =>$row['apellidos'],
                     'celular' =>$row['celular']
                 );
                 //PUSH TO DATA

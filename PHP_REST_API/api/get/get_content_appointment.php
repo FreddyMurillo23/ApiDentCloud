@@ -27,12 +27,12 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'correo' =>utf8_encode($row['correo']),
-                    'nombres' =>utf8_encode($row['nombres']),
-                    'apellidos' =>utf8_encode($row['apellidos']),
+                    'correo' =>$row['correo'],
+                    'nombres' =>$row['nombres'],
+                    'apellidos' =>$row['apellidos'],
                     'fecha_hora' =>$row['fecha_hora'],
-                    'servicio' => utf8_encode($row['servicio']),
-                    'descripcion' => utf8_encode($row['descripcion'])
+                    'servicio' => $row['servicio'],
+                    'descripcion' =>$row['descripcion']
                 );
                 //PUSH TO DATA
                 array_push($post_arraylist['contenido_solicitud'], $post_item);

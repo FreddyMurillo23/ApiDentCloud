@@ -27,9 +27,9 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'medicamento' => utf8_encode($row['medicamento']),
-                    'dosis' => utf8_encode($row['dosis']),
-                    'detalles' => utf8_encode($row['detalles'])
+                    'medicamento' => $row['medicamento'],
+                    'dosis' => $row['dosis'],
+                    'detalles' => $row['detalles']
                 );
                 //PUSH TO DATA
                 array_push($post_arraylist['receta_cita'], $post_item);

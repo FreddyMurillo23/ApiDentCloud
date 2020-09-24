@@ -25,9 +25,9 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'nombre' =>utf8_encode($row['nombre']),
-                    'presentacion' =>utf8_encode($row['presentacion']),
-                    'dosificacion' => utf8_encode($row['dosificacion'])
+                    'nombre' =>$row['nombre'],
+                    'presentacion' =>$row['presentacion'],
+                    'dosificacion' => $row['dosificacion']
                 );
                 //PUSH TO DATA
                 array_push($post_arraylist['dosis_medicinas'], $post_item);

@@ -28,7 +28,7 @@
     
                 $post_item = array(
                     'paciente' =>$row['paciente'],
-                    'correo' => utf8_encode($row['correo'])
+                    'correo' => $row['correo']
                 );
                 //PUSH TO DATA
                 array_push($post_arraylist['pacientes_recientes'], $post_item);

@@ -27,14 +27,14 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'usuario' => utf8_encode($row['usuario']),
-                    'descripcion' => utf8_encode($row['descripcion']),
-                    'archivo' => utf8_encode($row['archivo']),
-                    'fecha' => utf8_encode($row['fecha']),
-                    'negocio' => utf8_encode($row['negocio']),
-                    'inicial_negocio' => utf8_encode($row['inicial_negocio']),
-                    'inicial_usuario' => utf8_encode($row['inicial_usuario']),
-                    'foto_perfil' => utf8_encode($row['foto_perfil'])
+                    'usuario' => $row['usuario'],
+                    'descripcion' => $row['descripcion'],
+                    'archivo' => $row['archivo'],
+                    'fecha' => $row['fecha'],
+                    'negocio' => $row['negocio'],
+                    'inicial_negocio' => $row['inicial_negocio'],
+                    'inicial_usuario' => $row['inicial_usuario'],
+                    'foto_perfil' => $row['foto_perfil']
                 );
                 //PUSH TO DATA
                 array_push($post_arraylist['publicaciones_negocio'], $post_item);

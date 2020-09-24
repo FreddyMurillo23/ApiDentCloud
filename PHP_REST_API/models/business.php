@@ -26,12 +26,12 @@ include_once '../../config/Database.php';
 
 
             $datos = array(
-                "business_ruc" => utf8_decode($business_ruc),
-                "business_name" => utf8_decode($business_name),
-                "business_phone"=> utf8_decode($business_phone),
-                "province"=> utf8_decode($province),
-                "canton"=> utf8_decode($canton),
-                "business_location"=> utf8_decode($business_location));
+                "business_ruc" => $business_ruc,
+                "business_name" => $business_name,
+                "business_phone"=> $business_phone,
+                "province"=> $province,
+                "canton"=> $canton,
+                "business_location"=> $business_location);
 
             $sql = "CALL insert_business(
                 '".$datos["business_ruc"]."',
@@ -69,11 +69,11 @@ include_once '../../config/Database.php';
 
 
             $datos = array(
-                "service_business_ruc" => utf8_decode($service_business_ruc),
-                "service_description" => utf8_decode($service_description),
-                "service_duration"=> utf8_decode($service_duration),
-                "service_cost"=> ($service_cost),
-                "service_url_image"=> utf8_decode($service_url_image)
+                "service_business_ruc" => $service_business_ruc,
+                "service_description" => $service_description,
+                "service_duration"=> $service_duration,
+                "service_cost"=> $service_cost,
+                "service_url_image"=> $service_url_image
             );
 
             $sql = "CALL insert_business_services(
@@ -110,8 +110,8 @@ include_once '../../config/Database.php';
 
             $datos = array(
                 "frequent_questions_service_id" => $frequent_questions_service_id,
-                "frequent_questions_description" => utf8_decode($frequent_questions_description),
-                "frequent_questions_reply"=> utf8_decode($frequent_questions_reply)
+                "frequent_questions_description" => $frequent_questions_description,
+                "frequent_questions_reply"=> $frequent_questions_reply
             );
 
             $sql = "CALL insert_service_questions(
@@ -145,8 +145,8 @@ include_once '../../config/Database.php';
 
 
             $datos = array(
-                "user_email" => utf8_decode($user_email),
-                "business_ruc" => utf8_decode($business_ruc),
+                "user_email" => $user_email,
+                "business_ruc" => $business_ruc,
                 "datetime_inscription"=> $datetime_inscription
             );
 

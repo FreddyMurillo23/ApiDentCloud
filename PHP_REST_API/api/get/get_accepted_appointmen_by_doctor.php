@@ -27,10 +27,10 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'paciente' =>utf8_encode($row['paciente']),
+                    'paciente' =>$row['paciente'],
                     'fecha' =>$row['fecha'],
-                    'servicio' => utf8_encode($row['servicio']),
-                    'descripcion' => utf8_encode($row['descripcion'])
+                    'servicio' => $row['servicio'],
+                    'descripcion' => $row['descripcion']
                 );
                 //PUSH TO DATA
                 array_push($post_arraylist['cita_acceptada'], $post_item);

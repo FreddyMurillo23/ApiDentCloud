@@ -27,7 +27,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'paciente' =>utf8_encode($row['paciente']),
+                    'paciente' =>$row['paciente'],
                     'fecha' =>$row['fecha'],
                     'id' => $row['id']
                 );

@@ -27,9 +27,9 @@
             while ($row = mysqli_fetch_assoc($result)) {
     
                 $post_item = array(
-                    'descripcion' =>utf8_encode($row['descripcion']),
-                    'tipo_documento' =>utf8_encode($row['tipo_documento']),
-                    'link' => utf8_encode($row['link']),
+                    'descripcion' =>$row['descripcion'],
+                    'tipo_documento' =>$row['tipo_documento'],
+                    'link' => $row['link'],
                     'fecha_carga' => $row['fecha_carga']
                 );
                 //PUSH TO DATA
