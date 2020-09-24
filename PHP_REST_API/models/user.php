@@ -263,16 +263,14 @@ include_once '../../config/Database.php';
         }
 
         // Update user_data
-       /* public function update_by_user(
+        public function update_by_user(
         $user_email,
         $password,
-        $user_dni,
         $user_names,
         $user_last_names,
         $birthdate,
         $cellphone,
         $sex,
-        $user_type,
         $doctor_profession
         )
         {
@@ -282,32 +280,40 @@ include_once '../../config/Database.php';
 
         
             $datos = array(
-            "medical_appointment_id" => $medical_appointment_id,
-            "drug_id" => $drug_id,
-            "prescription_details"=> utf8_decode($prescription_details)
+            "user_email" => $user_email,
+            "password" => $password,
+            "user_names" => $user_names,
+            "user_last_names" => $user_last_names,
+            "birthdate" => $birthdate,
+            "cellphone" => $cellphone,
+            "sex" => $sex,
+            "doctor_profession" => $doctor_profession
             );
             
-            $sql = "CALL insert_drug_prescription(
-            '".$datos["medical_appointment_id"]."',
-            '".$datos["drug_id"]."',
-            '".$datos["prescription_details"]."'
+            $sql = "CALL update_user_data(
+            '".$datos["user_email"]."',
+            '".$datos["password"]."',
+            '".$datos["user_names"]."',
+            '".$datos["user_last_names"]."',
+            '".$datos["birthdate"]."',
+            '".$datos["cellphone"]."',
+            '".$datos["sex"]."',
+            '".$datos["doctor_profession"]."'
             )";
 
             if($db->query($sql)){
                 echo json_encode(
-                    array('message' => 'GUARDADO CON EXITO')
+                    array('message' => 'Datos Actualizados con exito')
                 );
             }else{
                 
                 echo json_encode(
-                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
+                    array('error'=>'Error al ingresar los datos')
                 );
             }
             mysqli_close($db);
 
-        
-
-        }*/
+        }
         
         
     }
