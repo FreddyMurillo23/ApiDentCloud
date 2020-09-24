@@ -87,7 +87,7 @@
         $post_arraylist = array('jsontype' => 'response');
         $post_arraylist['respuesta_obtenida'] = array();
         $post_item = array(
-         'message' => 'Error Ingresar los Datos'
+         'message' => 'Error Ingresar el Email'
        );
        //PUSH TO DATA
        array_push($post_arraylist['respuesta_obtenida'], $post_item);
