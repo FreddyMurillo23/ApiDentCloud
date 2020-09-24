@@ -60,14 +60,27 @@ include_once '../../config/Database.php';
             )";
 
             if($db->query($sql)){
-                echo json_encode(
-                    array('message' => 'GUARDADO CON EXITO')
-                );
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Guardado con exito'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
             }else{
-                
-                echo json_encode(
-                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
-                );
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Error al Ingresar los Datos'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
             }
             mysqli_close($db);
         }        
@@ -108,17 +121,27 @@ include_once '../../config/Database.php';
             )";
             
             if($db->query($sql)){
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
 
-
-                echo json_encode(
-                    array('message' => 'CAMBIOS GUARDADOS CON EXITO')
-                );
+                $post_item = array(
+                 'message' => 'Datos Actualizados con exito'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
             }else{
-        
-                
-                echo json_encode(
-                    array('error'=>'ERROR AL ACTUALIZAR LOS DATOS')
-                );
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Error al actualizar los datos'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
             }
             mysqli_close($db);
         }

@@ -30,8 +30,16 @@ if(isset($_GET['business_ruc']))
 
 
 }else{
-    $error_arraylist = array('jsontype'=> 'ERROR','message'=> 'INGRESE EL RUC DEL NEGOCIO');
-    echo json_encode($error_arraylist);
+    //POST ARRAY
+    $post_arraylist = array('jsontype' => 'response');
+    $post_arraylist['respuesta_obtenida'] = array();
+
+    $post_item = array(
+     'message' => 'Ingrese el ruc del negocio'
+    );
+    //PUSH TO DATA
+    array_push($post_arraylist['respuesta_obtenida'], $post_item);
+    echo json_encode($post_arraylist);
 }
 
 ?> 

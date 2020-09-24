@@ -42,11 +42,30 @@ include_once '../../config/Database.php';
                 '".$datos["business_location"]."'
                 )";
             if($db->query($sql)){
-                $error_arraylist = array('JSONTYPE'=> 'RESPONSE','MESSAGE'=> 'GUARDADO CON EXITO');
-            echo json_encode($error_arraylist);
+                //POST ARRAY
+                 $post_arraylist = array('jsontype' => 'response');
+                 $post_arraylist['respuesta_obtenida'] = array();
+
+                 $post_item = array(
+                  'message' => 'Guardado con exito'
+                );
+                //PUSH TO DATA
+                array_push($post_arraylist['respuesta_obtenida'], $post_item);
+                echo json_encode($post_arraylist);
+                
+        
             }else{ 
-                $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'ERROR AL INGRESAR LOS DATOS');
-            echo json_encode($error_arraylist);
+        
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Error al ingresar los datos'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
                 
             }
             mysqli_close($db);
@@ -85,11 +104,28 @@ include_once '../../config/Database.php';
                 )";
 
             if($db->query($sql)){
-                $error_arraylist = array('JSONTYPE'=> 'RESPONSE','MESSAGE'=> 'GUARDADO CON EXITO');
-            echo json_encode($error_arraylist);
+                 //POST ARRAY
+                 $post_arraylist = array('jsontype' => 'response');
+                 $post_arraylist['respuesta_obtenida'] = array();
+
+                 $post_item = array(
+                  'message' => 'Guardado con exito'
+                 );
+                 //PUSH TO DATA
+                 array_push($post_arraylist['respuesta_obtenida'], $post_item);
+                 echo json_encode($post_arraylist);
+
             }else{ 
-                $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'ERROR AL INGRESAR LOS DATOS');
-            echo json_encode($error_arraylist);
+            //POST ARRAY
+            $post_arraylist = array('jsontype' => 'response');
+            $post_arraylist['respuesta_obtenida'] = array();
+
+            $post_item = array(
+             'message' => 'Error al ingresar los datos'
+            );
+            //PUSH TO DATA
+            array_push($post_arraylist['respuesta_obtenida'], $post_item);
+            echo json_encode($post_arraylist);
                 
             }
             mysqli_close($db);
@@ -121,11 +157,27 @@ include_once '../../config/Database.php';
                 )";
 
             if($db->query($sql)){
-                $error_arraylist = array('JSONTYPE'=> 'RESPONSE','MESSAGE'=> 'GUARDADO CON EXITO');
-            echo json_encode($error_arraylist);
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Guardado con exito'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
             }else{ 
-                $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'ERROR AL INGRESAR LOS DATOS');
-            echo json_encode($error_arraylist);
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Error al ingresar los datos'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
                 
             }
             mysqli_close($db);
@@ -157,11 +209,27 @@ include_once '../../config/Database.php';
                 )";
 
             if($db->query($sql)){
-                $error_arraylist = array('JSONTYPE'=> 'RESPONSE','MESSAGE'=> 'GUARDADO CON EXITO');
-            echo json_encode($error_arraylist);
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Guardado con exito'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
             }else{ 
-                $error_arraylist = array('JSONTYPE'=> 'ERROR','MESSAGE'=> 'ERROR AL INGRESAR LOS DATOS');
-            echo json_encode($error_arraylist);
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Error al ingresar los datos'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
                 
             }
             mysqli_close($db);

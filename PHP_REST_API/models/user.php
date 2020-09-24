@@ -73,17 +73,27 @@ include_once '../../config/Database.php';
 
             $sql = "CALL create_allergies('".$ag_type1."','".$ag_name1."','".$ag_description1."')";
             if($db->query($sql)){
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
 
-
-                echo json_encode(
-                    array('message' => 'GUARDADO CON EXITO')
-                );
+                $post_item = array(
+                 'message' => 'Guardado con exito'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
             }else{
-        
-                
-                echo json_encode(
-                    array('error'=>'ERROR AL INGRESAR LOS DATOS')
-                );
+                //POST ARRAY
+                $post_arraylist = array('jsontype' => 'response');
+                $post_arraylist['respuesta_obtenida'] = array();
+
+                $post_item = array(
+                 'message' => 'Error al ingresar los datos'
+               );
+               //PUSH TO DATA
+               array_push($post_arraylist['respuesta_obtenida'], $post_item);
+               echo json_encode($post_arraylist);
             }
             mysqli_close($db);
         }
