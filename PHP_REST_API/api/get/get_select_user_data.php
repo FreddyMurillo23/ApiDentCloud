@@ -81,5 +81,17 @@
         }
     
     }
+    else
+    {
+        //POST ARRAY
+        $post_arraylist = array('jsontype' => 'response');
+        $post_arraylist['respuesta_obtenida'] = array();
+        $post_item = array(
+         'message' => 'Error Ingresar los Datos'
+       );
+       //PUSH TO DATA
+       array_push($post_arraylist['respuesta_obtenida'], $post_item);
+       echo json_encode($post_arraylist);
+    }
 
 ?>        
