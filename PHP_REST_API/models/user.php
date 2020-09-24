@@ -314,6 +314,10 @@ include_once '../../config/Database.php';
             mysqli_close($db);
 
         }
+        public function update_file_photo()
+        {
+            
+        }
         
         
     }
