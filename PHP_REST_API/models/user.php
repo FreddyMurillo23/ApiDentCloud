@@ -137,7 +137,7 @@ include_once '../../config/Database.php';
             //
             $user_email1 = $datos["user_email"];
             $user_email_emi1=$datos["user_email_emi"];
-            $message_content1=u$datos["message_content"];
+            $message_content1=$datos["message_content"];
             $message_date1=$datos["message_date"];
             $message_type1=$datos["message_type"];
             $message_url_content1=$datos["message_url_content"];
