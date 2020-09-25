@@ -35,7 +35,9 @@
                     'inicial_negocio' => $row['inicial_negocio'],
                     'inicial_usuario' => $row['inicial_usuario'],
                     'foto_perfil' => $row['foto_perfil']
+                    
                 );
+                $post_item['public'] = array(); 
                 //PUSH TO DATA
                 array_push($post_arraylist['publicaciones'], $post_item);
             }
